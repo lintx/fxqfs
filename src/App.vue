@@ -41,7 +41,7 @@
 
 <script setup>
 const list = ref({
-  "红":{"踩黄":0,"踩蓝":0,"踩绿":0,"进":3,"漏":0},
+  "红":{"踩黄":0,"踩蓝":0,"踩绿":0,"进":0,"漏":0},
   "黄":{"踩红":0,"踩蓝":0,"踩绿":0,"进":0,"漏":0},
   "蓝":{"踩红":0,"踩黄":0,"踩绿":0,"进":0,"漏":0},
   "绿":{"踩红":0,"踩黄":0,"踩蓝":0,"进":0,"漏":0},
@@ -64,7 +64,13 @@ const result = computed(()=>{
           }
         }
       }else if (kk === "漏") {
-        data[k]["漏踩"] -= list.value[k][kk] * 3
+        for (const kkk in data) {
+          if (kkk === k) {
+            data[kkk]["进机"] -= list.value[k][kk] * 3
+          }else {
+            data[kkk]["进机"] += list.value[k][kk]
+          }
+        }
       }else {
         const color = kk.replace("踩","")
         for (const kkk in data) {
