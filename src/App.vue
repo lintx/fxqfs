@@ -66,9 +66,9 @@ const result = computed(()=>{
       }else if (kk === "漏") {
         for (const kkk in data) {
           if (kkk === k) {
-            data[kkk]["进机"] -= list.value[k][kk] * 3
+            data[kkk]["漏踩"] -= list.value[k][kk] * 3
           }else {
-            data[kkk]["进机"] += list.value[k][kk]
+            data[kkk]["漏踩"] += list.value[k][kk]
           }
         }
       }else {
